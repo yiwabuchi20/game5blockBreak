@@ -187,6 +187,9 @@ let Paddle = enchant.Class.create(enchant.Sprite, {
       this.addEventListener(Event.TOUCH_MOVE, function(e){
           this.x = e.x;
       });
+      this.addEventListener('touchstart', function(e){
+          this.x = e.x;
+      })
       core.rootScene.addChild(this);
     }
 })
