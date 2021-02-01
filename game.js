@@ -25,7 +25,7 @@ window.onload = () => {
     core.combo = 1;
 
     //ゲームで使用する画像ファイルを指定する
-    core.preload('img/baki_36px.png');
+    core.preload('img/baki_36px.png', 'img/yujiro.png');
 
     //ファイルのプリロードが完了したときに実行される関数
     core.onload = () => {
@@ -43,6 +43,13 @@ window.onload = () => {
 
         //パドルを作成する
         let paddle = new Paddle(160 - 16, 320 - 32);
+
+        //ラベルを作成する
+        let infoLabel = new Label('');
+        infoLabel.color = '#000000';
+        infoLabel.font = '14px Yu Mincho';
+        infoLabel.moveTo(10, 160);
+        core.rootScene.addChild(infoLabel);
 
         //rootSceneのenterframeイベントリスナ
         core.rootScene.addEventListener('enterframe', function(e){
@@ -122,6 +129,29 @@ window.onload = () => {
                     core.end();
                 }
             }
+
+            if(core.score >= 100){
+                infoLabel.text = "努力する者が楽しむ者に勝てるはずがない";
+            }
+            if(core.score >= 200){
+                infoLabel.text = "日に30時間の鍛錬という";
+            }
+            if(core.score >= 1000){
+                infoLabel.text = "矛盾のみを条件に存在する肉体！";
+            }
+            if(core.score >= 5000){
+                infoLabel.text = "少しだけ耐えられるということ---";
+            }
+            if(core.score >= 10000){
+                infoLabel.text = "それは永遠に耐えられるということ.....！";
+            }
+            if(core.score >= 20000){
+                infoLabel.text = "人呼んで、最強の生物らしいわ、、、";
+                infoLabel.color = "#FF0000";
+                infoLabel.font = '28px Yu Mincho';
+                bg.image = core.assets['img/yujiro.png'];
+            }
+            
         });
 
         let scoreLabel = new ScoreLabel(5, 0);
@@ -168,7 +198,7 @@ let Ball = enchant.Class.create(enchant.Sprite, {
 //パドルのスプライトを作成するクラス
 let Paddle = enchant.Class.create(enchant.Sprite, {
     initialize: function(x, y){
-        enchant.Sprite.call(this, 48, 16);
+        enchant.Sprite.call(this, 48, 12);
         this.backgroundColor = "#FFFFFF";
         this.x = x;
         this.y = y;
