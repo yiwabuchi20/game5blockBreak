@@ -198,7 +198,7 @@ let Ball = enchant.Class.create(enchant.Sprite, {
 //パドルのスプライトを作成するクラス
 let Paddle = enchant.Class.create(enchant.Sprite, {
     initialize: function(x, y){
-        enchant.Sprite.call(this, 48, 12);
+        enchant.Sprite.call(this, 48, 16);
         this.backgroundColor = "#FFFFFF";
         this.x = x;
         this.y = y;
