@@ -168,7 +168,7 @@ let Ball = enchant.Class.create(enchant.Sprite, {
 //パドルのスプライトを作成するクラス
 let Paddle = enchant.Class.create(enchant.Sprite, {
     initialize: function(x, y){
-        enchant.Sprite.call(this, 48, 8);
+        enchant.Sprite.call(this, 48, 16);
         this.backgroundColor = "#FFFFFF";
         this.x = x;
         this.y = y;
@@ -187,9 +187,6 @@ let Paddle = enchant.Class.create(enchant.Sprite, {
       this.addEventListener(Event.TOUCH_MOVE, function(e){
           this.x = e.x;
       });
-      this.addEventListener('touchstart', function(e){
-          this.x = e.x;
-      })
       core.rootScene.addChild(this);
     }
 })
